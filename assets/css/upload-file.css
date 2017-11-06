@@ -1,0 +1,198 @@
+/* Styling for File Input Buttons and Checkbox */
+
+label {
+  font-family: 'Lato', sans-serif;
+
+}
+
+#vessel {
+    display:flex;
+    margin: 0em -3.5em;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    max-width: 80%;
+    font-size: 0.9em;
+    /* 20px */
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625em 1.25em;
+    /* 10px 20px */
+    margin: 0em 4em;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 0.75em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    /* 4px */
+    margin-right: 0.25em;
+    /* 4px */
+}
+
+/* Placeholder and File Name Text*/
+.inputfile + label {
+    color: #000 /*rgba(255, 255, 255, 0.5); #17263d*/;
+    font-weight: 500;
+}
+
+/* Outline Box */
+.inputfile + label {
+    border: 2px solid #000/*rgba(255, 255, 255, 0.35)*/;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0.5em;
+}
+
+/* Hover Outline Box */
+.inputfile:focus + label,
+.inputfile.has-focus + label,
+.inputfile + label:hover {
+    border-color: #ffc40c;
+    background-color: rgba(255, 255, 255, 0.125);
+}
+
+/* Size of Outline Box */
+.inputfile + label span,
+.inputfile + label strong {
+    padding: 0.425rem 0.425rem; /* Space between all text elements and top of boxes */
+    /* 10px 20px */
+}
+
+.inputfile + label span {
+    width: 14rem; /* Width allowed for placeholder text */
+    min-height: 1em;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+    margin-left: 0.25em; /* Space between placeholder text and left edge of box */
+}
+
+/* Button Box */
+.inputfile + label strong {
+    color: #ffffff;
+    background-color: #000;
+    display: inline-block;
+}
+
+/* Hover Button */
+.inputfile:focus + label strong,
+.inputfile.has-focus + label strong,
+.inputfile + label:hover strong {
+    background-color: #ffc40c;
+}
+
+@media screen and (max-width: 50em) {
+    .inputfile + label strong {
+        display: block;
+    }
+}
+
+/* Checkbox */
+
+.control {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.35);
+    position: relative;
+    display: block;
+    padding-left: 30px;
+    cursor: pointer;
+    margin-top: 0.5em;
+    margin-left: -2em;
+}
+
+.control .checkbox-input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.control__indicator {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    border-radius: 3px;
+}
+
+.control--radio .control__indicator {
+    border-radius: 50%;
+}
+
+/* Hover and focus states */
+.control:hover .checkbox-input ~ .control__indicator,
+.control .checkbox-input:focus ~ .control__indicator {
+    background: #ccc;
+}
+
+/* Checked state */
+.control .checkbox-input:checked ~ .control__indicator {
+    background: #1cb495;
+}
+
+/* Hover state whilst checked */
+.control:hover .checkbox-input:not([disabled]):checked ~ .control__indicator,
+.control .checkbox-input:checked:focus ~ .control__indicator {
+    background: #189a80;
+}
+
+/* Disabled state */
+.control .checkbox-input:disabled ~ .control__indicator {
+    pointer-events: none;
+    opacity: .6;
+    background: #ffffff;
+}
+
+/* Check mark */
+.control__indicator:after {
+    position: absolute;
+    display: none;
+    content: '';
+}
+
+/* Show check mark */
+.control .checkbox-input:checked ~ .control__indicator:after {
+    display: block;
+}
+
+/* Checkbox tick */
+.control--checkbox .control__indicator:after {
+    top: 4px;
+    left: 8px;
+    width: 5px;
+    height: 8px;
+    transform: rotate(45deg);
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+}
+
+/* Disabled tick colour */
+.control--checkbox .checkbox-input:disabled ~ .control__indicator:after {
+    border-color: #ffffff;
+}
