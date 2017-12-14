@@ -2,13 +2,13 @@
 
 RDR is a method for adding a front end to a bioinformatics command line tool that is flexible, computationally effecient, cost-effective, and above all, conducive to reproduciblility.
 
-The following walkthrough assumes basic knowledge of Linux, virutal machines, as well basic web development concepts.
+The following walkthrough assumes basic knowledge of Linux, virutal machines, as well as web development concepts.
 
 This walkthrough will show you how to adapt our base framework for a simple application.
-Our downsampling script will take a directory of FASTQ files and take a random sample of reads from each file. Downsampling could be useful when a downstream analysis tool is able to take advantage of the inherent low-dimensionality of gene expression data.
+Our downsampling script will take a random sample of reads from each FASTQ file. Downsampling could be useful when a downstream analysis tool is able to take advantage of the inherent low-dimensionality of gene expression data.
 
-### Architecture:
-Our framework utilizes a Model-View-Controller like framework. The server's filesystem is under /var/www/html. Here we have our models, views, controllers, and assets directories.
+### Architecture Overview:
+Our framework utilizes a Model-View-Controller like framework. This effectively seperates the logic of your code. HTML files belong under views, server side scripts in PHP or whatever language your algorithm is written in belong under controllers, and data will be stored in Models. The server's filesystem is under /var/www/html. Here we have our models, views, controllers, and assets directories.
 
 ### The Front Page:
 Name your app! Provide a brief description or whatever you want... Specify the parameter values here as well. All of this can be done by editing the front_page.html document in /var/www/html/views/
@@ -20,4 +20,34 @@ You can add the following HTML tag to the front page
 <input type="text" name="parameter1" placeholder="Input Read Depth [Default 5000000]"/>
 ```
 
+### Controllers:
+Now we can try adding the downsample executable to its proper location. 
 
+The run.php script takes care of the parameters specified in your front page form. It collects them to create a shell command that will feed input into your script.
+
+So now we can build the command to execute the script. Change the line
+```php
+if(isset($_POST['parameter1'])) {
+    $parameter1 = (int)$_POST['parameter1'];
+    #$command = "/var/www/html/controllers/Algorithm/EXECUTABLE_NAME";
+}
+else {
+    #$command = "/var/www/html/controllers/Algorithm/EXECUTABLE_NAME";
+}
+```
+
+to 
+
+```php
+if (move_uploaded_file($_FILES['data']['tmp_name'], $target_file)) {
+## CHECK IF A PARAMETER IS SPECIFIED
+    if(isset($_POST['parameter1'])) {
+        $parameter1 = (int)$_POST['parameter1'];
+        $command = "/var/www/html/controllers/Algorithm/downfile -n $parameter1 $target_file";
+    }
+    else {
+        $command = "/var/www/html/controllers/Algorithm/downfile $target_file";
+    }
+    exec($command);
+}
+```
