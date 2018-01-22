@@ -2,14 +2,15 @@
 
 RDR is a method for adding a front end to your bioinformatics command line tool that is flexible, computationally effecient, cost-effective, and above all, conducive to reproduciblility.
 
-The following walkthrough assumes basic knowledge of Linux, virutal machines, as well as web development concepts. This walkthrough will show you how to adapt our base framework for a simple application.
+The following walkthrough assumes basic knowledge of Linux, virtual machines, as well as web development concepts. This walkthrough will show you how to adapt our base framework for a simple application.
 
-We have made our 'downsampling' script written in Python available here. This script will take a random sample of reads from each FASTQ file. This is useful when a downstream analysis tool has been shown to require a smaller amount of reads than might be present in a FASTQ file (ie. a tool that is able to take advantage of the inherent low dimensionality of gene expression data).
+We have made our 'downsampling' script, written in Python, available here. This script will take a random sample of reads from each FASTQ file. This is useful when a downstream analysis tool has been shown to require a smaller amount of reads than might be present in a FASTQ file (ie. a tool that is able to take advantage of the inherent low dimensionality of gene expression data).
 
 ### Architecture Overview:
 Our framework utilizes a Model-View-Controller like architecture. This effectively seperates the logic of your code. HTML files are found under 'views', server side scripts in PHP or whatever language your tool is written in belong under 'controllers', and data will be stored in 'Models'. The server's filesystem is under /var/www/html. Here we have our models, views, controllers, and assets directories.
 
 ### The Front Page:
+![frontpage](images/blank_front_page)
 - Name your app! Provide a brief description or whatever you want... Specify the parameter values here as well. All of this can be done by editing the front_page.html document in /var/www/html/views/
 - For the purposes of the downsampling application we will add a form element to specify the number of reads desired.
 - You can add the following HTML tag to the front page:
@@ -18,6 +19,7 @@ Our framework utilizes a Model-View-Controller like architecture. This effective
 ```
 - So now your front page should look something like this:
 
+![frontpage](images/downsample_front_page)
 
 ### Controllers:
 - Now we can try adding the downsample executable to its proper location. 
