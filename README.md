@@ -16,7 +16,7 @@ We have made our 'downsampling' script, written in Python, available here. This 
 Our framework utilizes a Model-View-Controller like architecture. This effectively seperates the logic of your code. HTML files are found under 'views', server side scripts in PHP or whatever language your tool is written in belong under 'controllers', and data will be stored in 'Models'. The server's filesystem is under /var/www/html. Here we have our models, views, controllers, and assets directories.
 
 ### The Front Page:
-![frontpage](md_images/blank_front_page.jpg)
+![frontpage](md_images/blank_front_page.JPEG)
 - Name your app! Provide a brief description or whatever you want... Specify the parameter values here as well. All of this can be done by editing the front_page.html document in /var/www/html/views/
 - For the purposes of the downsampling application we will add a form element to specify the number of reads desired.
 - You can add the following HTML tag to the front page:
