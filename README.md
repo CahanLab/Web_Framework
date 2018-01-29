@@ -1,5 +1,7 @@
 # RDR Web Framework
 
+Current Image ID: ami-5a96a020
+
 RDR is a method for adding a front end to your bioinformatics command line tool that is flexible, computationally effecient, cost-effective, and above all, conducive to reproduciblility.
 
 The following walkthrough assumes basic knowledge of Linux, virtual machines, as well as web development concepts. This walkthrough will show you how to adapt our base framework for a simple application.
