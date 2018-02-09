@@ -11,24 +11,26 @@
 
 	<body>
 		<header id="header">
-			<h1>HISAT2</h1>
-			<p>Graph-based alignment of next generation sequencing reads to a population of genomes <br> Algorithm by the Salzberg Lab. Framework brought to you by the <a href="http://www.cahanlab.org/" target="blank">Cahan Lab</a></p>
+			<h1>Sample App</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br> Duis aute irure dolor in reprehenderit in voluptate velit esse. Brought to you by the <a href="http://www.cahanlab.org/" target="blank">Cahan Lab</a></p>
 		</header>
 		<form action="../controllers/run.php" method="POST" enctype="multipart/form-data">
 			<input type="text" name="parameter1" placeholder="Input 1 Placeholder text"/>
+			<br>
+			<p>For S3 Transfers:</p>
+			<input type="text" name="access-id" placeholder="Access ID"/>
+			<br>
+			<input type="text" name="secret-id" placeholder="Secret Access ID"/>
+			<br>
+			<input type="text" name="s3-path" placeholder="Path to files on S3, eg. bucket_name/path/to/fastq/"/>
+			<br>
 			<!--<br>
 			<input type="text" name="parameter2" placeholder="Input 2 Placeholder text"/>
 			<br>
 			<input type="text" name="parameter3" placeholder="Input 3 Placeholder text"/>-->
 			<br>
-			<div>
-				<div id="vessel">					
-					<div class="box" id="fastq-box">
-						<input type="file" name="data" id="fastq-upload" class="inputfile" required/>
-						<label for="fastq-upload"><span id="fastq"></span> <strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> Upload</strong></label>
-					</div>
-				</div>
-			</div>
+			<input type="file" name="data" />
+			<br>
 			<!-- Submit Button-->
 			<br>
 	  		<input type="submit" value="Submit">
