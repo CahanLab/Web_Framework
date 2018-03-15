@@ -9,12 +9,19 @@ We have written a Python 'down-sampling' script, `down.py` as an example of a bi
 ### Architecture Overview:
 Radiator utilizes a Model-View-Controller (MVC)-like architecture. This is an organizational paradigm that separates the logic of code into the categories of front-end/user-side appearance (views), back-end/server-side software (controllers), and data (models). 
 
-In the Radiator framework, directories are organized under the MVC paradigm as such: HTML files are found under 'views', server-side scripts under 'controllers', and data under 'models'.  Supplemental CSS and Javascript files specifying additional front-end behaviors are found under 'assets.' These directories are stored in the server's filesystem under `/var/www/html`. 
+In the Radiator framework, directories are organized under the MVC paradigm as such: 
+* HTML files are stored under `views` 
+* Server-side scripts are stored under `controllers` 
+* Data are stored under `models`
+* Supporting CSS and Javascript files specifying additional front-end behaviors are found under `assets` 
+
+These directories are stored in the server's filesystem under `/var/www/html`. 
 
 
 ### Launching our base framework (For the Developer):
 The base virtual machine is hosted by Amazon Web Services as an EC2 Amazon Machine Image (AMI). Currently it is only available in the US-East-1 region.
-1.  Select the Radiator AMI: **Cahan-Lab Application Framework Base Image** <AMI ID: ami-5dd1db27>
+1.  Select the Radiator AMI: **Cahan-Lab Application Framework Base Image** 
+    * AMI ID: `ami-5dd1db27`
 2.  Specify desired instance type.
 3.  Specify security group. Make sure it allows for incoming traffic through ports 20 (SSH for shell access) and port 80 (HTTP for web access)
 4.  Launch instance.
@@ -71,7 +78,7 @@ if (move_uploaded_file($_FILES['data']['tmp_name'], $target_file)) {
 ```
 
 ### Setting I/O Paths:
-- Now make sure that the executable is writing its output to the right place. In your the downsample script, replace this line (LINE 40):
+11. Now make sure that the executable is writing its output to the right place. In your the downsample script, replace this line (LINE 40):
     ```python
     with open("subset_"+fname, "w") as output:
     ```
@@ -82,20 +89,20 @@ if (move_uploaded_file($_FILES['data']['tmp_name'], $target_file)) {
     ```
 ### Make Application Available through Cloud Formation:
 
-11. Save new AMI based on current instance state.
-12. Make the AMI public.
-13. Map your Stack Template to launch an instance of your AMI.
-14. Make the link to your Stack Template publically available. 
+12. Save new AMI based on current instance state.
+13. Make the AMI public.
+14. Map your Stack Template to launch an instance of your AMI.
+15. Make the link to your Stack Template publically available. 
 
 ### Launching the Application (End-user):
 
 This process is similar to launching the CellNet web application, detailed on the [CellNet Web Application GitHub Page](https://github.com/pcahan1/CellNet_Cloud).
 
-15. Navigate to Cloud Formation.
-16. Create Stack by pasting link to Stack Template.
-17. Use the output URL to open the web application.
-18. Use web application.
-19. Finish and delete stack.  
+16. Navigate to Cloud Formation.
+17. Create Stack by pasting link to Stack Template.
+18. Use the output URL to open the web application.
+19. Use web application.
+20. Finish and delete stack.  
 
 
 ### Storage
